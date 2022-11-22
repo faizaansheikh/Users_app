@@ -1,0 +1,15 @@
+.cont-div{
+    background-color: #cfe8fc;
+    height: 120vh;
+    /* display: flex;
+    align-items: center;
+    flex-direction: column; */
+}
+/* .card-wid{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+} */
+.em{
+    font-weight: 500;
+}

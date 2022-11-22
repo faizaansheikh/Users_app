@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
 
+
+
+import { createContext, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Axios from './components/Consts/Axios'
+import AddUser from "./components/form/AddUser";
+import Form from "./components/form/Form";
+import Cards from "./components/users/Cards";
+
+import Users from "./components/users/Users";
+export const GlobalInfo = createContext()
 function App() {
+  const [editForm,setEditForm] = useState('')
+  const apiValues = (data)=>{
+    setEditForm(data);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+  <GlobalInfo.Provider value={{apiValues:apiValues,editForm:editForm}}>
+    <Routes>
+      <Route path="/" element={<Users/>}/>
+      <Route path="/edit/:id" element={<Form/>}/>
+      <Route path="/adduser" element={ <AddUser/>}/>
+    </Routes>
+  </GlobalInfo.Provider>
+    </>
   );
 }
 
